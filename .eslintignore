@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.prettierrc.js
+.eslintrc.js
+env.d.ts
+src/api/types/suppliers.d.ts
+src/api/types/supplier-assesments.d.ts
+src/api/types/*.d.ts

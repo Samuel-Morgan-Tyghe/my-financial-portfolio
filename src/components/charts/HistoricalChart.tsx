@@ -67,7 +67,7 @@ const HistoricalChart: React.FC<AssetChartProps> = ({ latestAssetsInfo }) => {
   const labels = Array.from(allDates).sort()
 
   const datasets = Object.keys(assetsByName).map((name, index) => {
-    const colorIndex = index % backgroundColor.length // Cycle through colors for datasets
+    const colorIndex = index % backgroundColor.length
 
     const dataForAsset = labels.map(date =>
       assetsByName[name][date] !== undefined ? assetsByName[name][date] : null,
@@ -78,11 +78,10 @@ const HistoricalChart: React.FC<AssetChartProps> = ({ latestAssetsInfo }) => {
       borderColor: borderColor[colorIndex],
       backgroundColor: backgroundColor[colorIndex],
       fill: false,
-      yAxisID: 'y', // Assign to the left y-axis
+      yAxisID: 'y',
     }
   })
 
-  // Prepare the dataset for all assets to use the right axis ('y1')
   const datasetForAllAssets = {
     label: 'Total Asset Value',
     data: labels.map(date =>
@@ -93,7 +92,7 @@ const HistoricalChart: React.FC<AssetChartProps> = ({ latestAssetsInfo }) => {
     borderColor: 'rgb(255, 99, 132)',
     backgroundColor: 'rgba(255, 99, 132, 0.2)',
     fill: false,
-    yAxisID: 'y1', // Assign to the right y-axis
+    yAxisID: 'y1',
   }
 
   const data: ChartData<'line'> = {
@@ -105,13 +104,13 @@ const HistoricalChart: React.FC<AssetChartProps> = ({ latestAssetsInfo }) => {
     scales: {
       y: {
         beginAtZero: false,
-        position: 'right', // Specify position for this axis
+        position: 'right',
       },
       y1: {
-        beginAtZero: true, // Allows this axis to start from its minimum value
-        position: 'left', // Specify position for this axis
+        beginAtZero: true,
+        position: 'left',
         grid: {
-          drawOnChartArea: false, // Only draw the grid for the left axis
+          drawOnChartArea: false,
         },
       },
     },
